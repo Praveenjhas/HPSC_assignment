@@ -1,0 +1,5 @@
+mode=weak_scaling
+base_count_per_thread=625
+box_length=1.259921049894873
+count=1250
+threads=2

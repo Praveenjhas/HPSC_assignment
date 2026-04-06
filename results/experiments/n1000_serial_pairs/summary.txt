@@ -1,0 +1,10 @@
+count                       : 1000
+runtime                     : 1.0786885
+zero_force_time             : 0.0006217999999999994
+gravity_time                : 0.0007897999999999988
+particle_contact_time       : 1.0588823
+wall_contact_time           : 0.001899699999999999
+integration_time            : 0.001609800000000002
+diagnostics_time            : 0.0143389
+contact_time                : 1.060782
+candidate_pairs             : 499500

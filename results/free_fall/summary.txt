@@ -1,0 +1,4 @@
+final_numeric_ke            : 4.897820921276743
+final_exact_z               : 0.2342
+final_exact_vz              : -5.886
+wall_runtime                : 0.1591986

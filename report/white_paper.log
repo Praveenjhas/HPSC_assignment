@@ -1,0 +1,552 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2026.3.28)  29 MAR 2026 13:46
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./white_paper.tex
+(white_paper.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/ieeetran\IE
+EEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+\@IEEEtrantmpdimenA=\dimen140
+\@IEEEtrantmpdimenB=\dimen141
+\@IEEEtrantmpdimenC=\dimen142
+\@IEEEtrantmpcountA=\count187
+\@IEEEtrantmpcountB=\count188
+\@IEEEtrantmpcountC=\count189
+\@IEEEtrantmptoksA=\toks17
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
+03.
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1p
+tm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+\@IEEEnormalsizeunitybaselineskip=\dimen143
+-- This is a 10 point document.
+\CLASSINFOnormalsizebaselineskip=\dimen144
+\CLASSINFOnormalsizeunitybaselineskip=\dimen145
+\IEEEnormaljot=\dimen146
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+\IEEEquantizedlength=\dimen147
+\IEEEquantizedlengthdiff=\dimen148
+\IEEEquantizedtextheightdiff=\dimen149
+\IEEEilabelindentA=\dimen150
+\IEEEilabelindentB=\dimen151
+\IEEEilabelindent=\dimen152
+\IEEEelabelindent=\dimen153
+\IEEEdlabelindent=\dimen154
+\IEEElabelindent=\dimen155
+\IEEEiednormlabelsep=\dimen156
+\IEEEiedmathlabelsep=\dimen157
+\IEEEiedtopsep=\skip48
+\c@section=\count190
+\c@subsection=\count191
+\c@subsubsection=\count192
+\c@paragraph=\count193
+\c@IEEEsubequation=\count194
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\c@figure=\count195
+\c@table=\count196
+\@IEEEeqnnumcols=\count197
+\@IEEEeqncolcnt=\count198
+\@IEEEsubeqnnumrollback=\count199
+\@IEEEquantizeheightA=\dimen158
+\@IEEEquantizeheightB=\dimen159
+\@IEEEquantizeheightC=\dimen160
+\@IEEEquantizeprevdepth=\dimen161
+\@IEEEquantizemultiple=\count266
+\@IEEEquantizeboxA=\box51
+\@IEEEtmpitemindent=\dimen162
+\IEEEPARstartletwidth=\dimen163
+\c@IEEEbiography=\count267
+\@IEEEtranrubishbin=\box52
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+math.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+text.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+gen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen164
+))
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+bsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen165
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+opn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count268
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count269
+\leftroot@=\count270
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count271
+\DOTSCASE@=\count272
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen166
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count273
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count274
+\dotsspace@=\muskip16
+\c@parentequation=\count275
+\dspbrk@lvl=\count276
+\tag@help=\toks19
+\row@=\count277
+\column@=\count278
+\maxfields@=\count279
+\andhelp@=\toks20
+\eqnshift@=\dimen167
+\alignsep@=\dimen168
+\tagshift@=\dimen169
+\tagwidth@=\dimen170
+\totwidth@=\dimen171
+\lineht@=\dimen172
+\@envbody=\toks21
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\gr
+aphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\ke
+yval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\gr
+aphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/graphics\tr
+ig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cf
+g\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/graphics-de
+f\pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen173
+\Gin@req@width=\dimen174
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l
+3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count280
+\l__pdf_internal_box=\box55
+) (white_paper.aux)
+\openout1 = `white_paper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+
+-- Lines per column: 56 (exact).
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/context/base/mkii
+\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count281
+\scratchdimen=\dimen175
+\scratchbox=\box56
+\nofMPsegments=\count282
+\nofMParguments=\count283
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count284
+\MPscratchDim=\dimen176
+\MPnumerator=\count285
+\makeMPintoPDFobject=\count286
+\everyMPtoPDFconversion=\toks25
+)
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pk
+g\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\ep
+stopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+)) [1{C:/Users/Praveen Kumar Jha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.m
+ap}{C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/ba
+se/8r.enc}
+
+
+]
+<figures/free_fall_numerical_vs_analytical.png, id=15, 441.0879pt x 268.3626pt>
+
+File: figures/free_fall_numerical_vs_analytical.png Graphic file (type png)
+<use figures/free_fall_numerical_vs_analytical.png>
+Package pdftex.def Info: figures/free_fall_numerical_vs_analytical.png  used on
+ input line 77.
+(pdftex.def)             Requested size: 252.0pt x 153.32042pt.
+<figures/free_fall_velocity_numerical_vs_analytical.png, id=17, 440.6061pt x 26
+8.3626pt>
+File: figures/free_fall_velocity_numerical_vs_analytical.png Graphic file (type
+ png)
+<use figures/free_fall_velocity_numerical_vs_analytical.png>
+Package pdftex.def Info: figures/free_fall_velocity_numerical_vs_analytical.png
+  used on input line 84.
+(pdftex.def)             Requested size: 252.0pt x 153.48831pt.
+<figures/timestep_sensitivity.png, id=18, 412.1799pt x 267.6399pt>
+File: figures/timestep_sensitivity.png Graphic file (type png)
+<use figures/timestep_sensitivity.png>
+Package pdftex.def Info: figures/timestep_sensitivity.png  used on input line 9
+3.
+(pdftex.def)             Requested size: 252.0pt x 163.63171pt.
+<figures/constant_velocity_numerical_vs_analytical.png, id=19, 441.0879pt x 505
+.4082pt>
+File: figures/constant_velocity_numerical_vs_analytical.png Graphic file (type 
+png)
+<use figures/constant_velocity_numerical_vs_analytical.png>
+Package pdftex.def Info: figures/constant_velocity_numerical_vs_analytical.png 
+ used on input line 103.
+(pdftex.def)             Requested size: 252.0pt x 288.74889pt.
+<figures/constant_velocity_velocity_check.png, id=20, 441.0879pt x 505.4082pt>
+File: figures/constant_velocity_velocity_check.png Graphic file (type png)
+<use figures/constant_velocity_velocity_check.png>
+Package pdftex.def Info: figures/constant_velocity_velocity_check.png  used on 
+input line 110.
+(pdftex.def)             Requested size: 252.0pt x 288.74889pt.
+ [2 <./figures/free_fall_numerical_vs_analytical.png> <./figures/free_fall_velo
+city_numerical_vs_analytical.png> <./figures/timestep_sensitivity.png> <./figur
+es/constant_velocity_numerical_vs_analytical.png>]
+<figures/bounce_height_vs_time.png, id=28, 441.0879pt x 268.3626pt>
+File: figures/bounce_height_vs_time.png Graphic file (type png)
+<use figures/bounce_height_vs_time.png>
+Package pdftex.def Info: figures/bounce_height_vs_time.png  used on input line 
+120.
+(pdftex.def)             Requested size: 252.0pt x 153.32042pt.
+<figures/bounce_kinetic_energy_vs_time.png, id=29, 441.0879pt x 402.303pt>
+File: figures/bounce_kinetic_energy_vs_time.png Graphic file (type png)
+<use figures/bounce_kinetic_energy_vs_time.png>
+Package pdftex.def Info: figures/bounce_kinetic_energy_vs_time.png  used on inp
+ut line 127.
+(pdftex.def)             Requested size: 252.0pt x 229.843pt.
+<figures/bounce_wall_overlap.png, id=30, 441.0879pt x 268.3626pt>
+File: figures/bounce_wall_overlap.png Graphic file (type png)
+<use figures/bounce_wall_overlap.png>
+Package pdftex.def Info: figures/bounce_wall_overlap.png  used on input line 13
+4.
+(pdftex.def)             Requested size: 252.0pt x 153.32042pt.
+<figures/particle_count_runtime.png, id=31, 426.6339pt x 268.3626pt>
+File: figures/particle_count_runtime.png Graphic file (type png)
+<use figures/particle_count_runtime.png>
+Package pdftex.def Info: figures/particle_count_runtime.png  used on input line
+ 146.
+(pdftex.def)             Requested size: 252.0pt x 158.51273pt.
+<figures/particle_count_candidate_pairs.png, id=32, 426.6339pt x 268.3626pt>
+File: figures/particle_count_candidate_pairs.png Graphic file (type png)
+<use figures/particle_count_candidate_pairs.png>
+Package pdftex.def Info: figures/particle_count_candidate_pairs.png  used on in
+put line 155.
+(pdftex.def)             Requested size: 252.0pt x 158.51273pt.
+
+[3 <./figures/constant_velocity_velocity_check.png> <./figures/bounce_height_vs
+_time.png> <./figures/bounce_kinetic_energy_vs_time.png>]
+<figures/particle_count_system_response.png, id=39, 426.8748pt x 427.3566pt>
+File: figures/particle_count_system_response.png Graphic file (type png)
+<use figures/particle_count_system_response.png>
+Package pdftex.def Info: figures/particle_count_system_response.png  used on in
+put line 164.
+(pdftex.def)             Requested size: 252.0pt x 252.28818pt.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+72.
+
+(C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1p
+cr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+[]\OT1/ptm/m/n/10 The se-rial code was pro-filed by in-stru-ment-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+\OT1/ptm/m/n/10 the main stages of the timestep loop with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+\OT1/pcr/m/n/10 std::chrono::steady_clock\OT1/ptm/m/n/10 . Rather than us-ing
+ []
+
+[4 <./figures/bounce_wall_overlap.png> <./figures/particle_count_runtime.png> <
+./figures/particle_count_candidate_pairs.png> <./figures/particle_count_system_
+response.png>]
+<figures/compiler_optimization_effect.png, id=48, 426.6339pt x 427.3566pt>
+File: figures/compiler_optimization_effect.png Graphic file (type png)
+<use figures/compiler_optimization_effect.png>
+Package pdftex.def Info: figures/compiler_optimization_effect.png  used on inpu
+t line 203.
+(pdftex.def)             Requested size: 252.0pt x 252.42513pt.
+<figures/parallel_velocity_comparison.png, id=49, 628.5081pt x 416.9979pt>
+File: figures/parallel_velocity_comparison.png Graphic file (type png)
+<use figures/parallel_velocity_comparison.png>
+Package pdftex.def Info: figures/parallel_velocity_comparison.png  used on inpu
+t line 243.
+(pdftex.def)             Requested size: 252.0pt x 167.19069pt.
+ [5 <./figures/compiler_optimization_effect.png>]
+<figures/openmp_speedup.png, id=57, 412.1799pt x 268.3626pt>
+File: figures/openmp_speedup.png Graphic file (type png)
+<use figures/openmp_speedup.png>
+Package pdftex.def Info: figures/openmp_speedup.png  used on input line 274.
+(pdftex.def)             Requested size: 252.0pt x 164.07358pt.
+<figures/openmp_efficiency.png, id=58, 412.4208pt x 268.3626pt>
+File: figures/openmp_efficiency.png Graphic file (type png)
+<use figures/openmp_efficiency.png>
+Package pdftex.def Info: figures/openmp_efficiency.png  used on input line 281.
+
+(pdftex.def)             Requested size: 252.0pt x 163.97939pt.
+
+Underfull \hbox (badness 1418) in paragraph at lines 290--291
+[]\OT1/ptm/m/n/10 In sum-mary, the strong-scaling re-sults prove that the
+ []
+
+<figures/openmp_weak_scaling.png, id=59, 412.1799pt x 268.3626pt>
+File: figures/openmp_weak_scaling.png Graphic file (type png)
+<use figures/openmp_weak_scaling.png>
+Package pdftex.def Info: figures/openmp_weak_scaling.png  used on input line 29
+4.
+(pdftex.def)             Requested size: 252.0pt x 164.07358pt.
+<figures/openmp_weak_efficiency.png, id=60, 412.4208pt x 268.3626pt>
+File: figures/openmp_weak_efficiency.png Graphic file (type png)
+<use figures/openmp_weak_efficiency.png>
+Package pdftex.def Info: figures/openmp_weak_efficiency.png  used on input line
+ 301.
+(pdftex.def)             Requested size: 252.0pt x 163.97939pt.
+<figures/openmp_weak_overhead.png, id=61, 412.1799pt x 268.3626pt>
+File: figures/openmp_weak_overhead.png Graphic file (type png)
+<use figures/openmp_weak_overhead.png>
+Package pdftex.def Info: figures/openmp_weak_overhead.png  used on input line 3
+25.
+(pdftex.def)             Requested size: 252.0pt x 164.07358pt.
+[6 <./figures/parallel_velocity_comparison.png> <./figures/openmp_speedup.png> 
+<./figures/openmp_efficiency.png>] [7 <./figures/openmp_weak_scaling.png> <./fi
+gures/openmp_weak_efficiency.png> <./figures/openmp_weak_overhead.png>]
+<figures/neighbor_runtime_comparison.png, id=77, 426.6339pt x 268.3626pt>
+File: figures/neighbor_runtime_comparison.png Graphic file (type png)
+<use figures/neighbor_runtime_comparison.png>
+Package pdftex.def Info: figures/neighbor_runtime_comparison.png  used on input
+ line 381.
+(pdftex.def)             Requested size: 252.0pt x 158.51273pt.
+<figures/neighbor_active_contacts.png, id=78, 426.8748pt x 268.3626pt>
+File: figures/neighbor_active_contacts.png Graphic file (type png)
+<use figures/neighbor_active_contacts.png>
+Package pdftex.def Info: figures/neighbor_active_contacts.png  used on input li
+ne 388.
+(pdftex.def)             Requested size: 252.0pt x 158.42674pt.
+
+[8 <./figures/neighbor_runtime_comparison.png> <./figures/neighbor_active_conta
+cts.png>]
+<figures/damping_height_vs_time.png, id=84, 441.0879pt x 268.3626pt>
+File: figures/damping_height_vs_time.png Graphic file (type png)
+<use figures/damping_height_vs_time.png>
+Package pdftex.def Info: figures/damping_height_vs_time.png  used on input line
+ 415.
+(pdftex.def)             Requested size: 252.0pt x 153.32042pt.
+<figures/damping_ke_vs_time.png, id=85, 441.0879pt x 268.3626pt>
+File: figures/damping_ke_vs_time.png Graphic file (type png)
+<use figures/damping_ke_vs_time.png>
+Package pdftex.def Info: figures/damping_ke_vs_time.png  used on input line 426
+.
+(pdftex.def)             Requested size: 252.0pt x 153.32042pt.
+<figures/damping_vs_energy.png, id=86, 412.4208pt x 267.8808pt>
+File: figures/damping_vs_energy.png Graphic file (type png)
+<use figures/damping_vs_energy.png>
+Package pdftex.def Info: figures/damping_vs_energy.png  used on input line 437.
+
+(pdftex.def)             Requested size: 252.0pt x 163.685pt.
+<figures/rebound_height_vs_bounce_number.png, id=87, 412.1799pt x 268.3626pt>
+File: figures/rebound_height_vs_bounce_number.png Graphic file (type png)
+<use figures/rebound_height_vs_bounce_number.png>
+Package pdftex.def Info: figures/rebound_height_vs_bounce_number.png  used on i
+nput line 444.
+(pdftex.def)             Requested size: 252.0pt x 164.07358pt.
+ [9 <./figures/damping_height_vs_time.png> <./figures/damping_ke_vs_time.png> <
+./figures/damping_vs_energy.png>]
+<figures/cloud_settling_diagnostics.png, id=94, 426.6339pt x 412.9026pt>
+File: figures/cloud_settling_diagnostics.png Graphic file (type png)
+<use figures/cloud_settling_diagnostics.png>
+Package pdftex.def Info: figures/cloud_settling_diagnostics.png  used on input 
+line 458.
+(pdftex.def)             Requested size: 252.0pt x 243.88763pt.
+<figures/cloud_settling_configurations.png, id=95, 717.6411pt x 216.81pt>
+File: figures/cloud_settling_configurations.png Graphic file (type png)
+<use figures/cloud_settling_configurations.png>
+Package pdftex.def Info: figures/cloud_settling_configurations.png  used on inp
+ut line 469.
+(pdftex.def)             Requested size: 252.0pt x 76.13275pt.
+<figures/cloud_damping_response.png, id=96, 412.1799pt x 412.4208pt>
+File: figures/cloud_damping_response.png Graphic file (type png)
+<use figures/cloud_damping_response.png>
+Package pdftex.def Info: figures/cloud_damping_response.png  used on input line
+ 480.
+(pdftex.def)             Requested size: 252.0pt x 252.14897pt.
+<figures/cloud_settling_snapshot.png, id=97, 390.0171pt x 311.7246pt>
+File: figures/cloud_settling_snapshot.png Graphic file (type png)
+<use figures/cloud_settling_snapshot.png>
+Package pdftex.def Info: figures/cloud_settling_snapshot.png  used on input lin
+e 489.
+(pdftex.def)             Requested size: 252.0pt x 201.41042pt.
+
+Underfull \vbox (badness 2205) has occurred while \output is active []
+
+ [10 <./figures/rebound_height_vs_bounce_number.png> <./figures/cloud_settling_
+diagnostics.png> <./figures/cloud_settling_configurations.png>]
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[11 <./figures/cloud_damping_response.png> <./figures/cloud_settling_snapshot.p
+ng>] (white_paper.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 3128 strings out of 474486
+ 58920 string characters out of 5738055
+ 1945542 words of memory out of 5000000
+ 25411 multiletter control sequences out of 15000+600000
+ 595543 words of font info for 106 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,10n,65p,1019b,263s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Praveen Kumar Jha/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Prave
+en Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7
+.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Praveen Kumar Jha/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Prave
+en Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.
+pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr7.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Praveen Kumar Jha/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Pravee
+n Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C
+:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
+tmb8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1
+/urw/times/utmbi8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTe
+X/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on white_paper.pdf (11 pages, 5493367 bytes).
+PDF statistics:
+ 176 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
+

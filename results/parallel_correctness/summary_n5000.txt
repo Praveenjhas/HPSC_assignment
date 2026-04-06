@@ -1,0 +1,7 @@
+count                       : 5000
+threads                     : 8
+ke_abs_diff                 : 0
+max_speed_abs_diff          : 0
+com_x_abs_diff              : 0
+com_y_abs_diff              : 0
+com_z_abs_diff              : 0

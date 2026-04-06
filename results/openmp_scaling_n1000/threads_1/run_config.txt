@@ -1,0 +1,3 @@
+mode=thread_scaling
+count=1000
+threads=1

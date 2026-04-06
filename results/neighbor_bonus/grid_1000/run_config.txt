@@ -1,0 +1,2 @@
+mode=neighbor_grid
+count=1000
