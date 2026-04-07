@@ -1,83 +1,201 @@
 # HPSC Assignment 1 Submission
 
-This repository contains the final submission package for HPSC 2026 Assignment 1.
+This repository contains my submission for HPSC 2026 Assignment 1.
 
-The project implements a compact three-dimensional discrete element method (DEM) solver for spherical particles in a rectangular box. The work includes the serial baseline solver, verification studies, runtime profiling, OpenMP parallelisation of the particle-contact loop, a neighbour-search bonus extension, and scientific bonus studies on damping and particle-cloud settling.
+The project implements a compact three-dimensional discrete element method (DEM) solver for spherical particles in a rectangular box. The submitted work includes:
 
-Included work:
-
-- serial 3D DEM solver for spherical particles
-- OpenMP parallel particle-contact loop
+- a serial C++17 baseline solver
 - verification cases
-- profiling and thread-scaling runs
+- runtime profiling
+- OpenMP parallelisation of the particle-contact loop
 - Section 18 bonus: neighbour search
-- Section 19 bonus: damping and timestep studies
+- Section 19 bonus: damping and particle-cloud settling studies
 
-This submission covers the assignment through Section 19 only.
+This submission covers the assignment through the second bonus section. The larger research problem was not attempted.
 
-## Platform note
+## Repository layout
 
-The provided automation is written for Windows PowerShell. The project can still be built and run manually on other systems if equivalent tools are available, but the packaged one-command workflow is intended for Windows.
+- `src/main.cpp`: solver, experiment drivers, output writing, profiling, OpenMP, and bonus-study logic
+- `scripts/plot_results.py`: reads generated CSV/text outputs and produces report figures
+- `requirements.txt`: Python packages needed for plotting
+- `report/white_paper.tex`: LaTeX source for the report
+- `report/figures/`: generated figures used in the report
+- `results/`: generated simulation outputs, summaries, diagnostics, and selected snapshots
+- `run_all.ps1`: end-to-end Windows workflow
+- `Makefile`: optional shortcuts for common tasks
 
-## Main command
+## What gets produced
 
-On Windows, the recommended command is:
+Running the workflow generates three main outputs:
+
+- `results/`: per-case diagnostics, summaries, and selected particle snapshots
+- `report/figures/`: plots created from the generated results
+- `report/white_paper.pdf`: final compiled report
+
+The report figures are not hand-made. They are generated from the data in `results/` by `scripts/plot_results.py`.
+
+## Solver modes
+
+The executable supports these modes:
+
+- `free_fall`: one-particle analytical verification under gravity
+- `constant_velocity`: zero-force constant-velocity verification
+- `bounce`: one-particle wall-bounce case
+- `verification`: grouped verification cases, including timestep sensitivity
+- `experiment`: increasing-particle-count serial experiment
+- `scaling`: profiling, OpenMP strong scaling, weak scaling, and serial-versus-parallel checks
+- `neighbor_bonus`: brute-force versus neighbour-search comparison
+- `science_bonus`: damping and particle-cloud settling studies
+
+## Requirements
+
+To reproduce the runs and rebuild the report, the following tools are needed:
+
+- a C++17 compiler with OpenMP support
+- Python 3
+- `pip`
+- `pdflatex`
+
+Python packages used for plotting:
+
+- `matplotlib`
+- `numpy`
+- `pandas`
+
+They can be installed with:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Quick start on Windows
+
+The repository includes a Windows PowerShell script for a one-command run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\run_all.ps1
 ```
 
-For a fresh rerun that deletes old generated outputs first:
+For a fresh rerun that removes old generated outputs first:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\run_all.ps1 -Clean
 ```
 
-This command does the full workflow:
+This workflow:
 
 1. checks required tools
 2. builds the solver
-3. runs the individual base cases (`free_fall`, `constant_velocity`, `bounce`)
-4. runs the grouped simulation cases
-5. installs Python plotting packages
-6. generates all figures
-7. compiles the final report PDF
+3. runs all verification, experiment, scaling, neighbour-search, and science-bonus cases
+4. installs Python plotting dependencies
+5. regenerates the report figures
+6. compiles the final PDF
 
-During long runs, the solver also prints live progress lines in the terminal showing:
+## Manual workflow on Linux or macOS
 
-- current step
-- simulation time
-- kinetic energy
-- center-of-mass height
-- active contacts
-- maximum speed
+The packaged automation script is Windows-specific, but the project can be reproduced manually on Linux or macOS with equivalent tools.
 
-Final outputs:
+### 1. Clone the repository and enter it
 
-- `results/`
-- `report/figures/`
-- `report/white_paper.pdf`
+```bash
+git clone https://github.com/Praveenjhas/HPSC_assignment.git
+cd HPSC_assignment
+```
 
-The `results/` directory stores CSV diagnostics, text summaries, and selected particle snapshots for each run. The plotting script reads these outputs and writes publication figures into `report/figures/`, and the LaTeX report then includes those figures when compiling `report/white_paper.pdf`.
+### 2. Install Python plotting dependencies
 
-## Required tools
+```bash
+python3 -m pip install -r requirements.txt
+```
 
-The one-command workflow expects these tools to already be installed:
+### 3. Build the solver
 
-- `clang++`
-- `python`
-- `pip`
-- `pdflatex`
+With `clang++`:
 
-Python plotting packages are installed automatically from `requirements.txt`.
+```bash
+clang++ -std=c++17 -O3 -Wall -Wextra -pedantic -fopenmp src/main.cpp -o dem_solver -fopenmp
+```
 
-If one of the required tools is missing, `run_all.ps1` stops early and prints what needs to be installed.
+If your system uses `g++` with OpenMP:
 
-## Optional make shortcuts
+```bash
+g++ -std=c++17 -O3 -Wall -Wextra -pedantic -fopenmp src/main.cpp -o dem_solver
+```
 
-If `make` is installed, these shortcuts are also available:
+### 4. Run the simulation modes
 
-```powershell
+```bash
+./dem_solver verification results
+./dem_solver free_fall results
+./dem_solver constant_velocity results
+./dem_solver bounce results
+./dem_solver experiment results
+./dem_solver scaling results
+./dem_solver neighbor_bonus results
+./dem_solver science_bonus results
+```
+
+### 5. Generate the figures
+
+```bash
+python3 scripts/plot_results.py
+```
+
+### 6. Compile the report
+
+```bash
+cd report
+pdflatex -interaction=nonstopmode -halt-on-error white_paper.tex
+pdflatex -interaction=nonstopmode -halt-on-error white_paper.tex
+```
+
+The final PDF will be:
+
+```text
+report/white_paper.pdf
+```
+
+## Minimal reproduction options
+
+If a full rerun is not needed, the stages can be run separately.
+
+Build only:
+
+```bash
+clang++ -std=c++17 -O3 -Wall -Wextra -pedantic -fopenmp src/main.cpp -o dem_solver -fopenmp
+```
+
+Run only one mode:
+
+```bash
+./dem_solver free_fall results
+```
+
+Regenerate only plots:
+
+```bash
+python3 scripts/plot_results.py
+```
+
+Recompile only the report:
+
+```bash
+cd report
+pdflatex -interaction=nonstopmode -halt-on-error white_paper.tex
+pdflatex -interaction=nonstopmode -halt-on-error white_paper.tex
+```
+
+## Notes on outputs
+
+- Progress information is printed during longer runs, including timestep, simulated time, kinetic energy, center-of-mass height, active contacts, and maximum speed.
+- Reported runtimes in the generated summaries are wall-clock runtimes of the simulation runs.
+- Different experiments use different physical simulation times depending on purpose, so the reported runtime should not be confused with simulated physical time.
+
+## Optional Makefile shortcuts
+
+If `make` is available, these shortcuts can also be used:
+
+```bash
 make full
 make run-free-fall
 make run-constant-velocity
@@ -89,79 +207,15 @@ make run-neighbor
 make run-science
 ```
 
-`make full` is only a shortcut for:
+On Windows, `make full` is just a shortcut for `run_all.ps1`.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\run_all.ps1
-```
+## Reproducibility note
 
-Most users should use `run_all.ps1` directly.
+All figures in the report are generated from repository data and scripts. The intended order is:
 
-## What each solver mode does
+1. compile the solver
+2. run the required simulation modes
+3. generate the figures from `results/`
+4. compile the LaTeX report
 
-- `free_fall` runs the single-particle analytical verification under gravity.
-- `constant_velocity` runs the zero-force constant-velocity verification.
-- `bounce` runs the single-particle wall-bounce case.
-- `verification` runs the grouped verification set, including timestep sensitivity and damping variants.
-- `experiment` runs the increasing-particle-count serial study.
-- `scaling` runs profiling, OpenMP strong scaling, weak scaling, and serial-versus-parallel correctness checks.
-- `neighbor_bonus` runs the brute-force versus neighbour-grid comparison.
-- `science_bonus` runs the damping studies and particle-cloud settling studies.
-
-## Manual commands
-
-If you want to run steps manually, use these commands.
-
-Build:
-
-```powershell
-clang++ -std=c++17 -O3 -Wall -Wextra -pedantic -fopenmp src/main.cpp -o dem_solver -fopenmp
-```
-
-Run solver modes:
-
-```powershell
-.\dem_solver free_fall results
-.\dem_solver constant_velocity results
-.\dem_solver bounce results
-.\dem_solver verification results
-.\dem_solver experiment results
-.\dem_solver scaling results
-.\dem_solver neighbor_bonus results
-.\dem_solver science_bonus results
-```
-
-Generate figures:
-
-```powershell
-python -m pip install -r requirements.txt
-python scripts\plot_results.py
-```
-
-Compile report:
-
-```powershell
-cd report
-pdflatex -interaction=nonstopmode -halt-on-error white_paper.tex
-pdflatex -interaction=nonstopmode -halt-on-error white_paper.tex
-```
-
-## Project files
-
-- `src/main.cpp` : main DEM solver, experiment drivers, and output logic
-- `run_all.ps1` : recommended end-to-end Windows workflow
-- `Makefile` : optional command shortcuts
-- `requirements.txt` : Python plotting dependencies
-- `scripts/plot_results.py` : figure generation from CSV outputs
-- `results/` : generated diagnostics, summaries, and particle snapshots
-- `report/figures/` : generated report figures
-- `report/white_paper.tex` : report source
-- `report/white_paper.pdf` : compiled final report
-
-## Notes
-
-- The code is written in C++17.
-- OpenMP is used in the brute-force particle-contact loop.
-- The neighbour-search implementation is used for the Section 18 bonus study.
-- The scientific bonus section includes damping and particle-cloud settling studies.
-- The report includes a short LLM-assistance disclosure, as required by the assignment instructions.
+If these steps are followed, the report can be regenerated from the repository contents.
