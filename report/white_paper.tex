@@ -171,7 +171,7 @@ Taken together, these results show two important points. First, the assignment r
 \section{Profiling Results}
 The serial code was profiled by instrumenting the main stages of the timestep loop with \texttt{std::chrono::steady\_clock}. Rather than using an external profiling package, short scoped timers were placed around force reset, gravity, particle-contact evaluation, wall-contact handling, integration, and diagnostics. This made it possible to record both the total runtime of a full simulation and the runtime distribution across the major functions that appear in the solver.
 
-The measured results show a very clear shift in cost as the number of particles increases. For the $N=200$ profiling run, the total runtime was about $0.062$~s, with about $0.0473$~s already spent in particle-contact work alone. For the $N=1000$ case, the total runtime rose to about $1.073$~s, of which about $1.0504$~s came from the particle-contact stage. By the time the system reaches $N=5000$, the full run takes about $35.078$~s and about $35.0081$~s of that time is spent in particle-contact handling. In other words, once the particle count becomes moderate or large, almost the entire runtime is consumed by contact evaluation.
+The measured results show a very clear shift in cost as the number of particles increases. For the $N=200$ profiling run, the total runtime was about $0.0468$~s, with about $0.0381$~s already spent in particle-contact work alone. For the $N=1000$ case, the total runtime rose to about $0.9897$~s, of which about $0.9714$~s came from the particle-contact stage. By the time the system reaches $N=5000$, the full run takes about $25.3378$~s and about $25.2736$~s of that time is spent in particle-contact handling. In other words, once the particle count becomes moderate or large, almost the entire runtime is consumed by contact evaluation.
 
 \begin{table}[t]
     \centering
@@ -184,9 +184,9 @@ The measured results show a very clear shift in cost as the number of particles 
         \hline
         Particle count & Total (s) & Reset + gravity & Particle contacts & Wall contacts & Integration & Diagnostics \\
         \hline
-        200 & 0.062 & 0.0003 & 0.0473 & 0.0005 & 0.0003 & 0.0128 \\
-        1000 & 1.073 & 0.0015 & 1.0504 & 0.0022 & 0.0017 & 0.0161 \\
-        5000 & 35.078 & 0.0095 & 35.0081 & 0.0145 & 0.0114 & 0.0338 \\
+        200 & 0.0468 & 0.0002 & 0.0381 & 0.0003 & 0.0003 & 0.0074 \\
+        1000 & 0.9897 & 0.0013 & 0.9714 & 0.0019 & 0.0016 & 0.0130 \\
+        5000 & 25.3378 & 0.0080 & 25.2736 & 0.0125 & 0.0109 & 0.0319 \\
         \hline
     \end{tabular}%
     }
