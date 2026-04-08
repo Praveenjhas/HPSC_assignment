@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2026.3.28)  7 APR 2026 11:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2026.3.28)  8 APR 2026 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -282,7 +282,7 @@ se/8r.enc}
 File: figures/free_fall_numerical_vs_analytical.png Graphic file (type png)
 <use figures/free_fall_numerical_vs_analytical.png>
 Package pdftex.def Info: figures/free_fall_numerical_vs_analytical.png  used on
- input line 77.
+ input line 81.
 (pdftex.def)             Requested size: 252.0pt x 153.32042pt.
 <figures/free_fall_velocity_numerical_vs_analytical.png, id=17, 440.6061pt x 26
 8.3626pt>
@@ -290,13 +290,13 @@ File: figures/free_fall_velocity_numerical_vs_analytical.png Graphic file (type
  png)
 <use figures/free_fall_velocity_numerical_vs_analytical.png>
 Package pdftex.def Info: figures/free_fall_velocity_numerical_vs_analytical.png
-  used on input line 84.
+  used on input line 88.
 (pdftex.def)             Requested size: 252.0pt x 153.48831pt.
 <figures/timestep_sensitivity.png, id=18, 412.1799pt x 267.6399pt>
 File: figures/timestep_sensitivity.png Graphic file (type png)
 <use figures/timestep_sensitivity.png>
 Package pdftex.def Info: figures/timestep_sensitivity.png  used on input line 9
-3.
+9.
 (pdftex.def)             Requested size: 252.0pt x 163.63171pt.
 <figures/constant_velocity_numerical_vs_analytical.png, id=19, 441.0879pt x 505
 .4082pt>
@@ -304,211 +304,209 @@ File: figures/constant_velocity_numerical_vs_analytical.png Graphic file (type
 png)
 <use figures/constant_velocity_numerical_vs_analytical.png>
 Package pdftex.def Info: figures/constant_velocity_numerical_vs_analytical.png 
- used on input line 103.
+ used on input line 109.
 (pdftex.def)             Requested size: 252.0pt x 288.74889pt.
 <figures/constant_velocity_velocity_check.png, id=20, 441.0879pt x 505.4082pt>
 File: figures/constant_velocity_velocity_check.png Graphic file (type png)
 <use figures/constant_velocity_velocity_check.png>
 Package pdftex.def Info: figures/constant_velocity_velocity_check.png  used on 
-input line 110.
+input line 116.
 (pdftex.def)             Requested size: 252.0pt x 288.74889pt.
  [2 <./figures/free_fall_numerical_vs_analytical.png> <./figures/free_fall_velo
-city_numerical_vs_analytical.png> <./figures/timestep_sensitivity.png> <./figur
-es/constant_velocity_numerical_vs_analytical.png>]
+city_numerical_vs_analytical.png> <./figures/timestep_sensitivity.png>]
 <figures/bounce_height_vs_time.png, id=28, 441.0879pt x 268.3626pt>
 File: figures/bounce_height_vs_time.png Graphic file (type png)
 <use figures/bounce_height_vs_time.png>
 Package pdftex.def Info: figures/bounce_height_vs_time.png  used on input line 
-120.
+128.
 (pdftex.def)             Requested size: 252.0pt x 153.32042pt.
 <figures/bounce_kinetic_energy_vs_time.png, id=29, 441.0879pt x 402.303pt>
 File: figures/bounce_kinetic_energy_vs_time.png Graphic file (type png)
 <use figures/bounce_kinetic_energy_vs_time.png>
 Package pdftex.def Info: figures/bounce_kinetic_energy_vs_time.png  used on inp
-ut line 127.
+ut line 135.
 (pdftex.def)             Requested size: 252.0pt x 229.843pt.
 <figures/bounce_wall_overlap.png, id=30, 441.0879pt x 268.3626pt>
 File: figures/bounce_wall_overlap.png Graphic file (type png)
 <use figures/bounce_wall_overlap.png>
-Package pdftex.def Info: figures/bounce_wall_overlap.png  used on input line 13
-4.
+Package pdftex.def Info: figures/bounce_wall_overlap.png  used on input line 14
+2.
 (pdftex.def)             Requested size: 252.0pt x 153.32042pt.
 <figures/particle_count_runtime.png, id=31, 426.6339pt x 268.3626pt>
 File: figures/particle_count_runtime.png Graphic file (type png)
 <use figures/particle_count_runtime.png>
 Package pdftex.def Info: figures/particle_count_runtime.png  used on input line
- 146.
+ 154.
 (pdftex.def)             Requested size: 252.0pt x 158.51273pt.
 <figures/particle_count_candidate_pairs.png, id=32, 426.6339pt x 268.3626pt>
 File: figures/particle_count_candidate_pairs.png Graphic file (type png)
 <use figures/particle_count_candidate_pairs.png>
 Package pdftex.def Info: figures/particle_count_candidate_pairs.png  used on in
-put line 155.
+put line 163.
 (pdftex.def)             Requested size: 252.0pt x 158.51273pt.
-
-[3 <./figures/constant_velocity_velocity_check.png> <./figures/bounce_height_vs
-_time.png> <./figures/bounce_kinetic_energy_vs_time.png>]
+ [3 <./figures/constant_velocity_numerical_vs_analytical.png> <./figures/consta
+nt_velocity_velocity_check.png> <./figures/bounce_height_vs_time.png>]
 <figures/particle_count_system_response.png, id=39, 426.8748pt x 427.3566pt>
 File: figures/particle_count_system_response.png Graphic file (type png)
 <use figures/particle_count_system_response.png>
 Package pdftex.def Info: figures/particle_count_system_response.png  used on in
-put line 164.
+put line 172.
 (pdftex.def)             Requested size: 252.0pt x 252.28818pt.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-72.
+80.
 
 (C:\Users\Praveen Kumar Jha\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1p
 cr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 []\OT1/ptm/m/n/10 The se-rial code was pro-filed by in-stru-ment-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 \OT1/ptm/m/n/10 the main stages of the timestep loop with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 \OT1/pcr/m/n/10 std::chrono::steady_clock\OT1/ptm/m/n/10 . Rather than us-ing
  []
 
-[4 <./figures/bounce_wall_overlap.png> <./figures/particle_count_runtime.png> <
-./figures/particle_count_candidate_pairs.png> <./figures/particle_count_system_
-response.png>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./figures/bounce_kinetic_energy_vs_time.png> <./figures/bounce_wall_overla
+p.png> <./figures/particle_count_runtime.png> <./figures/particle_count_candida
+te_pairs.png>]
 <figures/compiler_optimization_effect.png, id=48, 426.6339pt x 427.3566pt>
 File: figures/compiler_optimization_effect.png Graphic file (type png)
 <use figures/compiler_optimization_effect.png>
 Package pdftex.def Info: figures/compiler_optimization_effect.png  used on inpu
-t line 203.
+t line 213.
 (pdftex.def)             Requested size: 252.0pt x 252.42513pt.
-<figures/parallel_velocity_comparison.png, id=49, 628.5081pt x 416.9979pt>
+ [5 <./figures/particle_count_system_response.png> <./figures/compiler_optimiza
+tion_effect.png>]
+<figures/parallel_velocity_comparison.png, id=58, 628.5081pt x 416.9979pt>
 File: figures/parallel_velocity_comparison.png Graphic file (type png)
 <use figures/parallel_velocity_comparison.png>
 Package pdftex.def Info: figures/parallel_velocity_comparison.png  used on inpu
-t line 243.
+t line 255.
 (pdftex.def)             Requested size: 252.0pt x 167.19069pt.
- [5 <./figures/compiler_optimization_effect.png>]
-<figures/openmp_speedup.png, id=57, 412.1799pt x 268.3626pt>
+<figures/openmp_speedup.png, id=59, 412.1799pt x 268.3626pt>
 File: figures/openmp_speedup.png Graphic file (type png)
 <use figures/openmp_speedup.png>
-Package pdftex.def Info: figures/openmp_speedup.png  used on input line 274.
+Package pdftex.def Info: figures/openmp_speedup.png  used on input line 286.
 (pdftex.def)             Requested size: 252.0pt x 164.07358pt.
-<figures/openmp_efficiency.png, id=58, 412.4208pt x 268.3626pt>
+<figures/openmp_efficiency.png, id=60, 412.4208pt x 268.3626pt>
 File: figures/openmp_efficiency.png Graphic file (type png)
 <use figures/openmp_efficiency.png>
-Package pdftex.def Info: figures/openmp_efficiency.png  used on input line 281.
+Package pdftex.def Info: figures/openmp_efficiency.png  used on input line 293.
 
 (pdftex.def)             Requested size: 252.0pt x 163.97939pt.
-
-Underfull \hbox (badness 1418) in paragraph at lines 290--291
-[]\OT1/ptm/m/n/10 In sum-mary, the strong-scaling re-sults prove that the
- []
-
-<figures/openmp_weak_scaling.png, id=59, 412.1799pt x 268.3626pt>
+ [6 <./figures/parallel_velocity_comparison.png> <./figures/openmp_speedup.png>
+]
+<figures/openmp_weak_scaling.png, id=68, 412.1799pt x 268.3626pt>
 File: figures/openmp_weak_scaling.png Graphic file (type png)
 <use figures/openmp_weak_scaling.png>
-Package pdftex.def Info: figures/openmp_weak_scaling.png  used on input line 29
-4.
+Package pdftex.def Info: figures/openmp_weak_scaling.png  used on input line 30
+6.
 (pdftex.def)             Requested size: 252.0pt x 164.07358pt.
-<figures/openmp_weak_efficiency.png, id=60, 412.4208pt x 268.3626pt>
+<figures/openmp_weak_efficiency.png, id=69, 412.4208pt x 268.3626pt>
 File: figures/openmp_weak_efficiency.png Graphic file (type png)
 <use figures/openmp_weak_efficiency.png>
 Package pdftex.def Info: figures/openmp_weak_efficiency.png  used on input line
- 301.
+ 313.
 (pdftex.def)             Requested size: 252.0pt x 163.97939pt.
-<figures/openmp_weak_overhead.png, id=61, 412.1799pt x 268.3626pt>
+<figures/openmp_weak_overhead.png, id=70, 412.1799pt x 268.3626pt>
 File: figures/openmp_weak_overhead.png Graphic file (type png)
 <use figures/openmp_weak_overhead.png>
 Package pdftex.def Info: figures/openmp_weak_overhead.png  used on input line 3
-25.
+37.
 (pdftex.def)             Requested size: 252.0pt x 164.07358pt.
-[6 <./figures/parallel_velocity_comparison.png> <./figures/openmp_speedup.png> 
-<./figures/openmp_efficiency.png>] [7 <./figures/openmp_weak_scaling.png> <./fi
-gures/openmp_weak_efficiency.png> <./figures/openmp_weak_overhead.png>]
-<figures/neighbor_runtime_comparison.png, id=77, 426.6339pt x 268.3626pt>
+ [7 <./figures/openmp_efficiency.png> <./figures/openmp_weak_scaling.png> <./fi
+gures/openmp_weak_efficiency.png>]
+<figures/neighbor_runtime_comparison.png, id=78, 426.6339pt x 268.3626pt>
 File: figures/neighbor_runtime_comparison.png Graphic file (type png)
 <use figures/neighbor_runtime_comparison.png>
 Package pdftex.def Info: figures/neighbor_runtime_comparison.png  used on input
- line 381.
+ line 395.
 (pdftex.def)             Requested size: 252.0pt x 158.51273pt.
-<figures/neighbor_active_contacts.png, id=78, 426.8748pt x 268.3626pt>
+<figures/neighbor_active_contacts.png, id=79, 426.8748pt x 268.3626pt>
 File: figures/neighbor_active_contacts.png Graphic file (type png)
 <use figures/neighbor_active_contacts.png>
 Package pdftex.def Info: figures/neighbor_active_contacts.png  used on input li
-ne 388.
+ne 402.
 (pdftex.def)             Requested size: 252.0pt x 158.42674pt.
-
-[8 <./figures/neighbor_runtime_comparison.png> <./figures/neighbor_active_conta
-cts.png>]
-<figures/damping_height_vs_time.png, id=84, 441.0879pt x 268.3626pt>
+ [8 <./figures/openmp_weak_overhead.png> <./figures/neighbor_runtime_comparison
+.png>]
+<figures/damping_height_vs_time.png, id=85, 441.0879pt x 268.3626pt>
 File: figures/damping_height_vs_time.png Graphic file (type png)
 <use figures/damping_height_vs_time.png>
 Package pdftex.def Info: figures/damping_height_vs_time.png  used on input line
- 415.
+ 429.
 (pdftex.def)             Requested size: 252.0pt x 153.32042pt.
-<figures/damping_ke_vs_time.png, id=85, 441.0879pt x 268.3626pt>
+<figures/damping_ke_vs_time.png, id=86, 441.0879pt x 268.3626pt>
 File: figures/damping_ke_vs_time.png Graphic file (type png)
 <use figures/damping_ke_vs_time.png>
-Package pdftex.def Info: figures/damping_ke_vs_time.png  used on input line 426
+Package pdftex.def Info: figures/damping_ke_vs_time.png  used on input line 440
 .
 (pdftex.def)             Requested size: 252.0pt x 153.32042pt.
-<figures/damping_vs_energy.png, id=86, 412.4208pt x 267.8808pt>
+ [9 <./figures/neighbor_active_contacts.png> <./figures/damping_height_vs_time.
+png>]
+<figures/damping_vs_energy.png, id=92, 412.4208pt x 267.8808pt>
 File: figures/damping_vs_energy.png Graphic file (type png)
 <use figures/damping_vs_energy.png>
-Package pdftex.def Info: figures/damping_vs_energy.png  used on input line 437.
+Package pdftex.def Info: figures/damping_vs_energy.png  used on input line 451.
 
 (pdftex.def)             Requested size: 252.0pt x 163.685pt.
-<figures/rebound_height_vs_bounce_number.png, id=87, 412.1799pt x 268.3626pt>
+<figures/rebound_height_vs_bounce_number.png, id=93, 412.1799pt x 268.3626pt>
 File: figures/rebound_height_vs_bounce_number.png Graphic file (type png)
 <use figures/rebound_height_vs_bounce_number.png>
 Package pdftex.def Info: figures/rebound_height_vs_bounce_number.png  used on i
-nput line 444.
+nput line 458.
 (pdftex.def)             Requested size: 252.0pt x 164.07358pt.
- [9 <./figures/damping_height_vs_time.png> <./figures/damping_ke_vs_time.png> <
-./figures/damping_vs_energy.png>]
 <figures/cloud_settling_diagnostics.png, id=94, 426.6339pt x 412.9026pt>
 File: figures/cloud_settling_diagnostics.png Graphic file (type png)
 <use figures/cloud_settling_diagnostics.png>
 Package pdftex.def Info: figures/cloud_settling_diagnostics.png  used on input 
-line 458.
+line 472.
 (pdftex.def)             Requested size: 252.0pt x 243.88763pt.
-<figures/cloud_settling_configurations.png, id=95, 717.6411pt x 216.81pt>
+ [10 <./figures/damping_ke_vs_time.png> <./figures/damping_vs_energy.png> <./fi
+gures/rebound_height_vs_bounce_number.png> <./figures/cloud_settling_diagnostic
+s.png>]
+<figures/cloud_settling_configurations.png, id=102, 717.6411pt x 216.81pt>
 File: figures/cloud_settling_configurations.png Graphic file (type png)
 <use figures/cloud_settling_configurations.png>
 Package pdftex.def Info: figures/cloud_settling_configurations.png  used on inp
-ut line 469.
+ut line 483.
 (pdftex.def)             Requested size: 252.0pt x 76.13275pt.
-<figures/cloud_damping_response.png, id=96, 412.1799pt x 412.4208pt>
+<figures/cloud_damping_response.png, id=103, 412.1799pt x 412.4208pt>
 File: figures/cloud_damping_response.png Graphic file (type png)
 <use figures/cloud_damping_response.png>
 Package pdftex.def Info: figures/cloud_damping_response.png  used on input line
- 480.
+ 494.
 (pdftex.def)             Requested size: 252.0pt x 252.14897pt.
-<figures/cloud_settling_snapshot.png, id=97, 390.0171pt x 311.7246pt>
+<figures/cloud_settling_snapshot.png, id=104, 390.0171pt x 311.7246pt>
 File: figures/cloud_settling_snapshot.png Graphic file (type png)
 <use figures/cloud_settling_snapshot.png>
 Package pdftex.def Info: figures/cloud_settling_snapshot.png  used on input lin
-e 489.
+e 503.
 (pdftex.def)             Requested size: 252.0pt x 201.41042pt.
 
-Underfull \vbox (badness 2205) has occurred while \output is active []
-
- [10 <./figures/rebound_height_vs_bounce_number.png> <./figures/cloud_settling_
-diagnostics.png> <./figures/cloud_settling_configurations.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
+[11 <./figures/cloud_settling_configurations.png> <./figures/cloud_damping_resp
+onse.png> <./figures/cloud_settling_snapshot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 516--517
 []\OT1/ptm/m/n/10 Source code, build in-struc-tions, and scripts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
+Underfull \hbox (badness 10000) in paragraph at lines 516--517
 \OT1/ptm/m/n/10 are in-cluded in the project repos-i-tory at
  []
 
 
-Overfull \hbox (26.5pt too wide) in paragraph at lines 502--503
+Overfull \hbox (26.5pt too wide) in paragraph at lines 516--517
 \OT1/pcr/m/n/10 https://github.com/Praveenjhas/HPSC_assignment\OT1/ptm/m/n/10 .
 
  []
@@ -524,21 +522,22 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[11 <./figures/cloud_damping_response.png> <./figures/cloud_settling_snapshot.p
-ng>] (white_paper.aux)
+[12
+
+] (white_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3128 strings out of 474486
- 58920 string characters out of 5738055
+ 3136 strings out of 474486
+ 58985 string characters out of 5738055
  1945542 words of memory out of 5000000
- 25411 multiletter control sequences out of 15000+600000
- 595543 words of font info for 106 fonts, out of 8000000 for 9000
+ 25413 multiletter control sequences out of 15000+600000
+ 600038 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,65p,1019b,263s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,10n,65p,1055b,282s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Praveen Kumar Jha/AppData
@@ -553,15 +552,18 @@ pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmr7.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Praveen Kumar Jha/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Pravee
-n Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C
-:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmb8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1
-/urw/times/utmbi8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTe
-X/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on white_paper.pdf (11 pages, 5501778 bytes).
+n Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/c
+ourier/ucrb8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fon
+ts/type1/urw/courier/ucrr8a.pfb><C:/Users/Praveen Kumar Jha/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Praveen Kumar Jha/AppData
+/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Praveen Kuma
+r Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/
+Praveen Kumar Jha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.p
+fb>
+Output written on white_paper.pdf (12 pages, 5525351 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
+ 189 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -20,7 +20,11 @@ DEM, OpenMP, particle simulation, neighbour search, parallel performance
 \end{IEEEkeywords}
 
 \section{Introduction}
-The objective of this assignment was to construct, verify, and parallelise a simple three-dimensional DEM solver. I followed the workflow suggested in the assignment itself: first writing a serial solver, then checking it on simple test cases, then profiling it, and finally parallelising the expensive part of the code with OpenMP. The solver was written in C++ and set up to write CSV files so that the same runs could be reused for plotting and analysis. This report covers the main assignment and the optional bonus tasks up to Section 19. The larger research extension from Section 20 was not attempted here.
+The objective of this assignment was to construct, verify, and parallelise a simple three-dimensional DEM solver. I followed the workflow suggested in the assignment itself: first writing a serial solver, then checking it on simple test cases, then profiling it, and finally parallelising the expensive part of the code with OpenMP. The solver was written in C++ and set up to write CSV files so that the same runs could be reused for plotting and analysis.
+
+The model assumptions are intentionally simple and match the assignment brief: particles are spherical, only translational motion is computed, gravity acts in the negative $z$ direction, and contacts are represented with a linear spring-dashpot normal-force law inside a rectangular box. The reported simulations include one-particle verification cases, multi-particle runs with $N=200$, $1000$, and $5000$ for profiling and scaling work, neighbour-search tests on the same particle-count range, and bonus science runs for damping and particle-cloud settling. Unless a case required otherwise, the main multi-particle experiments used particles of radius $0.015$~m, density $2400$~kg/m$^3$, and a timestep of $\Delta t = 10^{-4}$~s; smaller or larger timesteps were used only in the dedicated verification and sensitivity studies.
+
+This report covers the main assignment and the optional bonus tasks up to Section 19. The larger research extension from Section 20 was not attempted here.
 
 \section{Mathematical Formulation}
 Each particle is represented by its position $\mathbf{x}_i$, velocity $\mathbf{v}_i$, mass $m_i$, and radius $R_i$. The translational motion is governed by Newton's second law,
@@ -70,7 +74,7 @@ A single particle was released from rest with gravity acting in the negative $z$
 \begin{equation}
     z(t) = z_0 - \frac{1}{2}gt^2.
 \end{equation}
-For this verification case the run was stopped before the particle reached the floor, so the analytical free-fall curve remained valid over the full plotted interval. Figure~\ref{fig:freefall} shows close agreement between the numerical and analytical trajectories. In addition, Figure~\ref{fig:freefallvel} compares the numerical and analytical vertical speed magnitude, which confirms that the solver reproduces both the correct position and the correct acceleration-driven velocity change. The two curves remain visually indistinguishable over most of the plotted interval, which indicates that the force assembly and the semi-implicit Euler update are both behaving consistently in this simple one-particle limit.
+For this verification case the run was stopped before the particle reached the floor, so the analytical free-fall curve remained valid over the full plotted interval. \textbf{Figure~\ref{fig:freefall} shows close agreement between the numerical and analytical trajectories.} In addition, \textbf{Figure~\ref{fig:freefallvel} compares the numerical and analytical vertical speed magnitude, which confirms that the solver reproduces both the correct position and the correct acceleration-driven velocity change.} \textbf{The two curves remain visually indistinguishable over most of the plotted interval, which indicates that the force assembly and the semi-implicit Euler update are both behaving consistently in this simple one-particle limit.}
 
 \begin{figure}[t]
     \centering
@@ -86,7 +90,9 @@ For this verification case the run was stopped before the particle reached the f
     \label{fig:freefallvel}
 \end{figure}
 
-The assignment also asks for an error-versus-timestep study. This was carried out by repeating the free-fall case for several values of $\Delta t$ and recording the final height error at the end of the run. Figure~\ref{fig:dtstudy} shows that this error decreases as the timestep is refined, which is the expected behaviour for the present time-integration scheme. The trend is monotone over the tested range, so the figure gives a direct practical guideline as well: smaller timesteps improve accuracy, but they do so at the cost of additional timesteps and higher runtime.
+The assignment also asks for an error-versus-timestep study. This was carried out by repeating the free-fall case for several values of $\Delta t$ and recording the final height error at the end of the run. \textbf{Figure~\ref{fig:dtstudy} shows that this error decreases as the timestep is refined, which is the expected behaviour for the present time-integration scheme.} The trend is monotone over the tested range, so the figure gives a direct practical guideline as well: smaller timesteps improve accuracy, but they do so at the cost of additional timesteps and higher runtime.
+
+Taken together, the free-fall position, free-fall velocity, and timestep-refinement results verify that the gravity term and the time-integration scheme are behaving correctly in the one-particle limit. This addresses the assignment requirement that the serial solver should be verified before moving on to profiling and parallelisation.
 
 \begin{figure}[t]
     \centering
@@ -96,7 +102,7 @@ The assignment also asks for an error-versus-timestep study. This was carried ou
 \end{figure}
 
 \subsection{Constant Velocity}
-Gravity was disabled and a single particle was initialised with a non-zero velocity. In this case the exact solution is a straight-line trajectory with constant velocity. The verification was therefore checked in two ways: by comparing the numerical and analytical positions in each coordinate direction, and by confirming that the numerical velocity components remained constant in time. Figure~\ref{fig:cvtraj} shows the position comparison and Figure~\ref{fig:cvvel} shows the velocity comparison. Together these results confirm that the zero-force case is being integrated correctly. In particular, the velocity curves remain flat, which shows that no spurious acceleration is introduced when the contact and gravity terms are inactive.
+Gravity was disabled and a single particle was initialised with a non-zero velocity. In this case the exact solution is a straight-line trajectory with constant velocity. The verification was therefore checked in two ways: by comparing the numerical and analytical positions in each coordinate direction, and by confirming that the numerical velocity components remained constant in time. Figure~\ref{fig:cvtraj} shows the position comparison and Figure~\ref{fig:cvvel} shows the velocity comparison. Together these results confirm that the zero-force case is being integrated correctly. \textbf{In particular, the velocity curves remain flat, which shows that no spurious acceleration is introduced when the contact and gravity terms are inactive.}
 
 \begin{figure}[t]
     \centering
@@ -113,7 +119,9 @@ Gravity was disabled and a single particle was initialised with a non-zero veloc
 \end{figure}
 
 \subsection{Bounce Test}
-A particle was dropped onto the lower wall. This test was used to check that the wall-contact model behaves physically: the particle should rebound after impact, wall penetration should remain bounded, and stronger damping should reduce the rebound response. Figure~\ref{fig:bounce} compares the height history for light and heavy damping, Figure~\ref{fig:bounceke} shows the corresponding kinetic-energy history, and Figure~\ref{fig:penetration} shows the wall overlap. The wall overlap remains small in both cases, so the particle does not penetrate excessively. In addition, the heavier damping case shows a clearly reduced rebound height and a faster decay of kinetic energy, which matches the expected qualitative behaviour. The sharp drops in kinetic energy correspond to dissipative wall impacts: the particle gains kinetic energy during free fall, then loses part of it rapidly at contact, and the retained amount becomes smaller when the damping coefficient is increased.
+A particle was dropped onto the lower wall. This test was used to check that the wall-contact model behaves physically: the particle should rebound after impact, wall penetration should remain bounded, and stronger damping should reduce the rebound response. \textbf{Figure~\ref{fig:bounce} compares the height history for light and heavy damping, Figure~\ref{fig:bounceke} shows the corresponding kinetic-energy history, and Figure~\ref{fig:penetration} shows the wall overlap.} \textbf{The wall overlap remains small in both cases, so the particle does not penetrate excessively.} In addition, \textbf{the heavier damping case shows a clearly reduced rebound height and a faster decay of kinetic energy, which matches the expected qualitative behaviour.} The sharp drops in kinetic energy correspond to dissipative wall impacts: the particle gains kinetic energy during free fall, then loses part of it rapidly at contact, and the retained amount becomes smaller when the damping coefficient is increased.
+
+This means that the bounce verification requested in the assignment is satisfied directly: the particle rebounds, stronger damping reduces rebound height, and wall penetration remains small.
 
 \begin{figure}[t]
     \centering
@@ -139,7 +147,7 @@ A particle was dropped onto the lower wall. This test was used to check that the
 \section{Simulation Experiments}
 After verifying the one-particle cases, the solver was run for systems with increasing particle counts: $N=200$, $1000$, and $5000$. These runs were used to study how the computational cost and the basic system response change as the number of particles increases.
 
-Figure~\ref{fig:particle_runtime} shows that the runtime grows rapidly with particle count, and that the particle-contact stage dominates the total runtime more strongly as $N$ becomes larger. This is expected because the baseline serial implementation uses brute-force all-pairs contact checking. The total-runtime curve and the dashed contact-stage curve lie very close to one another for the larger cases, which is itself evidence that most of the wall-clock time is being spent in contact evaluation.
+\textbf{Figure~\ref{fig:particle_runtime} shows that the runtime grows rapidly with particle count, and that the particle-contact stage dominates the total runtime more strongly as $N$ becomes larger.} This is expected because the baseline serial implementation uses brute-force all-pairs contact checking. The total-runtime curve and the dashed contact-stage curve lie very close to one another for the larger cases, which is itself evidence that most of the wall-clock time is being spent in contact evaluation.
 
 \begin{figure}[t]
     \centering
@@ -148,7 +156,7 @@ Figure~\ref{fig:particle_runtime} shows that the runtime grows rapidly with part
     \label{fig:particle_runtime}
 \end{figure}
 
-Figure~\ref{fig:particle_pairs} shows the corresponding growth in candidate pairs. The increase follows the expected all-pairs trend, which explains why contact detection becomes the dominant cost for larger systems. This plot is especially useful because it links the physical setup directly to computational cost: once the particle count increases, the solver is forced to examine many more potential interactions even before it decides whether contact actually occurs.
+\textbf{Figure~\ref{fig:particle_pairs} shows the corresponding growth in candidate pairs. The increase follows the expected all-pairs trend, which explains why contact detection becomes the dominant cost for larger systems.} This plot is especially useful because it links the physical setup directly to computational cost: once the particle count increases, the solver is forced to examine many more potential interactions even before it decides whether contact actually occurs.
 
 \begin{figure}[t]
     \centering
@@ -157,7 +165,7 @@ Figure~\ref{fig:particle_pairs} shows the corresponding growth in candidate pair
     \label{fig:particle_pairs}
 \end{figure}
 
-Figure~\ref{fig:particle_response} shows that increasing the particle count also changes the system-level response: the final kinetic energy and the maximum particle speed both increase for the larger cases. This is consistent with the fact that larger clouds create more interactions, more active collisions, and more opportunities for momentum exchange inside the box. So the multi-particle study is not only a runtime benchmark; it also shows that increasing $N$ changes the qualitative dynamical behaviour of the simulated system.
+\textbf{Figure~\ref{fig:particle_response} shows that increasing the particle count also changes the system-level response: the final kinetic energy and the maximum particle speed both increase for the larger cases.} This is consistent with the fact that larger clouds create more interactions, more active collisions, and more opportunities for momentum exchange inside the box. So the multi-particle study is not only a runtime benchmark; it also shows that increasing $N$ changes the qualitative dynamical behaviour of the simulated system.
 
 \begin{figure}[t]
     \centering
@@ -171,12 +179,12 @@ Taken together, these results show two important points. First, the assignment r
 \section{Profiling Results}
 The serial code was profiled by instrumenting the main stages of the timestep loop with \texttt{std::chrono::steady\_clock}. Rather than using an external profiling package, short scoped timers were placed around force reset, gravity, particle-contact evaluation, wall-contact handling, integration, and diagnostics. This made it possible to record both the total runtime of a full simulation and the runtime distribution across the major functions that appear in the solver.
 
-The measured results show a very clear shift in cost as the number of particles increases. For the $N=200$ profiling run, the total runtime was about $0.0468$~s, with about $0.0381$~s already spent in particle-contact work alone. For the $N=1000$ case, the total runtime rose to about $0.9897$~s, of which about $0.9714$~s came from the particle-contact stage. By the time the system reaches $N=5000$, the full run takes about $25.3378$~s and about $25.2736$~s of that time is spent in particle-contact handling. In other words, once the particle count becomes moderate or large, almost the entire runtime is consumed by contact evaluation.
+The measured results show a very clear shift in cost as the number of particles increases. \textbf{For the $N=200$ profiling run, the total runtime was about $0.0468$~s, with about $0.0381$~s already spent in particle-contact work alone. For the $N=1000$ case, the total runtime rose to about $0.9897$~s, of which about $0.9714$~s came from the particle-contact stage. By the time the system reaches $N=5000$, the full run takes about $25.3378$~s and about $25.2736$~s of that time is spent in particle-contact handling.} In other words, once the particle count becomes moderate or large, almost the entire runtime is consumed by contact evaluation.
 
 \begin{table}[t]
     \centering
     \scriptsize
-    \caption{Runtime distribution across major functions for the serial profiling runs.}
+    \caption{\textbf{Runtime distribution across major functions for the serial profiling runs.}}
     \label{tab:profiling}
     \setlength{\tabcolsep}{2pt}
     \resizebox{\columnwidth}{!}{%
@@ -192,11 +200,13 @@ The measured results show a very clear shift in cost as the number of particles 
     }
 \end{table}
 
-Table~\ref{tab:profiling} makes the runtime distribution visible in a compact way. The gravity, integration, and diagnostics stages do contribute some cost, but their contribution stays small compared with the brute-force particle-particle contact loop. The candidate-pair counts reported for the same runs, namely $19{,}900$, $499{,}500$, and $12{,}497{,}500$, explain this behaviour directly: the serial all-pairs method grows quadratically with particle count, so contact detection becomes the computational bottleneck. This is why the contact stage was chosen for OpenMP parallelisation first, and later for neighbour-search optimisation.
+Table~\ref{tab:profiling} makes the runtime distribution visible in a compact way. The gravity, integration, and diagnostics stages do contribute some cost, but their contribution stays small compared with the brute-force particle-particle contact loop. The candidate-pair counts reported for the same runs, namely $19{,}900$, $499{,}500$, and $12{,}497{,}500$, explain this behaviour directly: the serial all-pairs method grows quadratically with particle count, so \textbf{contact detection becomes the computational bottleneck.} This is why the contact stage was chosen for OpenMP parallelisation first, and later for neighbour-search optimisation.
+
+In the language of the assignment brief, this profiling section therefore reports the total runtime, the runtime distribution across the major functions, and the dominant computational bottleneck.
 
 Compiler optimisation was also enabled during the profiling study. All production builds used the \texttt{-O3} optimisation flag together with the normal warning flags. This means the reported runtimes are not from a debug-style build, but from an optimised executable that is closer to how the final solver should actually be run. Even with compiler optimisation enabled, the same bottleneck remained visible, which strengthens the conclusion that algorithmic and parallel improvements are needed in addition to compiler-level optimisation.
 
-To quantify this point, the same serial experiment set was also compiled once with \texttt{-O0} and once with \texttt{-O3}. Figure~\ref{fig:compileropt} shows both the measured runtimes and the runtime ratio $T_{O0}/T_{O3}$, so the optimisation benefit is visible directly. For example, the $N=5000$ run dropped from about $233.93$~s at \texttt{-O0} to about $28.46$~s at \texttt{-O3}. This confirms that compiler optimisation is worthwhile, but it also shows that optimisation flags alone do not remove the all-pairs contact bottleneck.
+To quantify this point, the same serial experiment set was also compiled once with \texttt{-O0} and once with \texttt{-O3}. \textbf{Figure~\ref{fig:compileropt} shows both the measured runtimes and the runtime ratio $T_{O0}/T_{O3}$, so the optimisation benefit is visible directly. For example, the $N=5000$ run dropped from about $233.93$~s at \texttt{-O0} to about $28.46$~s at \texttt{-O3}.} This confirms that compiler optimisation is worthwhile, but it also shows that optimisation flags alone do not remove the all-pairs contact bottleneck.
 
 \begin{figure}[t]
     \centering
@@ -210,7 +220,7 @@ OpenMP was applied to the particle-contact loop. A direct parallel update of sha
 
 This approach preserves numerical correctness while avoiding atomics on every contact-force update. The current implementation parallelises the brute-force all-pairs contact kernel because it is the dominant hotspot and because it has a simple work-sharing structure.
 
-To verify that the parallel results match the serial results, the same physical case was run once with the serial contact loop and once with the OpenMP loop. The final diagnostic quantities were then compared directly. Table~\ref{tab:parallelcorrect} summarises the outcome for both $N=1000$ and $N=5000$. The final kinetic energy, maximum particle speed, center-of-mass height, and active-contact count are identical in the recorded output for both cases. This is strong evidence that parallelisation has not changed the numerical solution itself.
+\textbf{To verify that the parallel results match the serial results,} the same physical case was run once with the serial contact loop and once with the OpenMP loop. The final diagnostic quantities were then compared directly. Table~\ref{tab:parallelcorrect} summarises the outcome for both $N=1000$ and $N=5000$. The final kinetic energy, maximum particle speed, center-of-mass height, and active-contact count are identical in the recorded output for both cases. This is strong evidence that parallelisation has not changed the numerical solution itself.
 
 \begin{table}[t]
     \centering
@@ -236,7 +246,9 @@ To verify that the parallel results match the serial results, the same physical 
     }
 \end{table}
 
-The same conclusion is illustrated visually in Figure~\ref{fig:parallelvel}, which compares serial and parallel velocity-component histories for a representative tracked particle for both $N=1000$ and $N=5000$. In every panel the OpenMP curve lies directly on top of the serial reference, so the velocity direction and magnitude are preserved after parallelisation. This is useful because it checks more than a single final scalar: it shows that the whole short-time motion history stays unchanged. Therefore, the parallelisation section does not only show that OpenMP was applied, but also that numerical correctness was preserved after the change.
+The same conclusion is illustrated visually in Figure~\ref{fig:parallelvel}, which compares serial and parallel velocity-component histories for a representative tracked particle for both $N=1000$ and $N=5000$. In every panel the OpenMP curve lies directly on top of the serial reference, so the velocity direction and magnitude are preserved after parallelisation. This is useful because it checks more than a single final scalar: it shows that the whole short-time motion history stays unchanged. \textbf{Therefore, the parallelisation section does not only show that OpenMP was applied, but also that numerical correctness was preserved after the change.}
+
+This directly satisfies the assignment requirement that the OpenMP version should improve performance without changing the numerical results.
 
 \begin{figure}[t]
     \centering
@@ -248,9 +260,9 @@ The same conclusion is illustrated visually in Figure~\ref{fig:parallelvel}, whi
 \section{Performance Analysis}
 Two standard parallel-scaling viewpoints were considered. In strong scaling, the total problem size is kept fixed and only the thread count is increased. In weak scaling, the problem size is increased together with the thread count so that the work handled by each thread remains more nearly constant. These are the conventional definitions used in parallel-performance analysis, and the discussion below follows that standard terminology.
 
-Before discussing the scaling plots, it is important to note that the profiling and scaling benchmarks are not identical. The profiling runs in Section~V use a simulated time of $0.03$~s, whereas the thread-scaling runs use a shorter simulated time of $0.02$~s. Therefore, the one-thread runtime for the $N=5000$ strong-scaling case is about $14.75$~s rather than the $35.08$~s seen in the profiling table. The purpose of the scaling benchmark is not to reproduce the profiling runtime exactly, but to compare thread counts fairly on the same fixed test case.
+Before discussing the scaling plots, it is important to note that the profiling and scaling benchmarks are not identical. The profiling runs in Section~V use a simulated time of $0.03$~s, whereas the thread-scaling runs use a shorter simulated time of $0.02$~s. Therefore, the one-thread runtime for the $N=5000$ strong-scaling case is about $14.75$~s rather than the $25.34$~s seen in the profiling table. The purpose of the scaling benchmark is not to reproduce the profiling runtime exactly, but to compare thread counts fairly on the same fixed test case.
 
-For the strong-scaling study, speedup and efficiency were computed for two fixed particle counts, $N=1000$ and $N=5000$. Table~\ref{tab:scaling} gives the measured runtimes, speedups, and efficiencies for thread counts from 1 to 8. Figure~\ref{fig:speedup} then visualises how the strong-scaling speedup changes with thread count, while Figure~\ref{fig:efficiency} shows how the parallel efficiency falls away from the ideal value as more threads are added.
+\textbf{For the strong-scaling study, speedup and efficiency were computed for two fixed particle counts, $N=1000$ and $N=5000$. Table~\ref{tab:scaling} gives the measured runtimes, speedups, and efficiencies for thread counts from 1 to 8. Figure~\ref{fig:speedup} then visualises how the strong-scaling speedup changes with thread count, while Figure~\ref{fig:efficiency} shows how the parallel efficiency falls away from the ideal value as more threads are added.}
 
 \begin{table}[t]
     \centering
@@ -287,7 +299,7 @@ The measured strong-scaling speedup is sub-linear, which is expected. The main r
 
 The two strong-scaling curves also show that the larger $N=5000$ case benefits more consistently from extra threads than the $N=1000$ case. This is a typical shared-memory result. When the problem is relatively small, thread startup, buffer reduction, and other fixed overheads consume a larger fraction of the runtime, so the measured speedup stays modest. When the problem is larger, the parallel contact loop has more work to distribute, so those same overheads are amortised more effectively and the speedup improves. In that sense, the strong-scaling study answers the practical question: if the same DEM case is kept fixed, how much faster can it be solved by adding more OpenMP threads?
 
-In summary, the strong-scaling results prove that the OpenMP implementation does accelerate fixed DEM problems, especially for the larger $N=5000$ case. The speedup is clearly better than 1 for higher thread counts, but it remains sub-linear because the code still contains serial work, memory traffic, and force-buffer reduction overhead. Therefore the parallel version is beneficial, but not ideally scalable.
+\textbf{In summary, the strong-scaling results prove that the OpenMP implementation does accelerate fixed DEM problems, especially for the larger $N=5000$ case. The speedup is clearly better than 1 for higher thread counts, but it remains sub-linear because the code still contains serial work, memory traffic, and force-buffer reduction overhead. Therefore the parallel version is beneficial, but not ideally scalable.}
 
 \begin{figure}[t]
     \centering
@@ -327,13 +339,15 @@ In summary, the strong-scaling results prove that the OpenMP implementation does
     \label{fig:weakoverhead}
 \end{figure}
 
-The weak-scaling study was carried out in a DEM-specific way. The number of particles was increased with thread count, but the box size was also increased so that the particle density did not rise artificially. In practice the cubic box length was scaled as $L \propto p^{1/3}$, which keeps the domain volume proportional to the particle count. This is important for DEM because changing the particle count without changing the box size would change the packing density and therefore the underlying physics.
+\textbf{The weak-scaling study was carried out in a DEM-specific way.} The number of particles was increased with thread count, but the box size was also increased so that the particle density did not rise artificially. In practice the cubic box length was scaled as $L \propto p^{1/3}$, which keeps the domain volume proportional to the particle count. This is important for DEM because changing the particle count without changing the box size would change the packing density and therefore the underlying physics.
 
-The measured weak-scaling results in Table~\ref{tab:weakscaling} and Figures~\ref{fig:weakruntime}--\ref{fig:weakoverhead} show that the implementation does not scale weakly in an ideal sense. If it did, the runtime would remain almost constant as both particle count and thread count increased. Instead, the runtime rises from about $0.38$~s at $(1,625)$ to about $6.45$~s at $(8,5000)$, the weak-scaling efficiency drops well below 1, and the overhead grows steadily with thread count.
+\textbf{The measured weak-scaling results in Table~\ref{tab:weakscaling} and Figures~\ref{fig:weakruntime}--\ref{fig:weakoverhead} show that the implementation does not scale weakly in an ideal sense.} If it did, the runtime would remain almost constant as both particle count and thread count increased. Instead, the runtime rises from about $0.38$~s at $(1,625)$ to about $6.45$~s at $(8,5000)$, the weak-scaling efficiency drops well below 1, and the overhead grows steadily with thread count.
 
-Even so, the weak-scaling study is still useful because it shows how quickly the shared-memory costs accumulate when larger DEM systems are attempted. The increase in runtime reflects several effects acting together: a larger all-pairs candidate set, more memory traffic, and the extra work of reducing thread-local force buffers back into the shared particle array. Therefore the present OpenMP implementation extends the solvable problem size, but it does not preserve constant runtime as the total problem size grows.
+Even so, the weak-scaling study is still useful because it shows how quickly the shared-memory costs accumulate when larger DEM systems are attempted. \textbf{The increase in runtime reflects several effects acting together: the brute-force all-pairs contact loop still expands the candidate set strongly as the total system grows, while memory traffic and thread-local force-buffer reduction add additional shared-memory overhead.} Therefore the present OpenMP implementation extends the solvable problem size, but it does not preserve constant runtime as the total problem size grows.
 
-In summary, the weak-scaling study proves that the current OpenMP solver can handle larger DEM systems when more threads are provided, but it does not maintain near-constant runtime under density-preserving problem growth. The rising runtime, falling weak efficiency, and increasing overhead all show that weak scaling is limited by the brute-force contact strategy and shared-memory overheads.
+\textbf{In summary, the weak-scaling study proves that the current OpenMP solver can handle larger DEM systems when more threads are provided, but it does not maintain near-constant runtime under density-preserving problem growth. The rising runtime, falling weak efficiency, and increasing overhead all show that weak scaling is limited by the brute-force contact strategy and shared-memory overheads.}
+
+Together, the strong- and weak-scaling results satisfy the assignment requirement for performance analysis: they quantify speedup and efficiency, and they explain why the observed scaling remains sub-linear in the present implementation.
 
 \section{Bonus Extension: Neighbour Search}
 To reduce the cost of contact detection, a uniform cell-linked neighbour grid was implemented. The box is divided into cubic cells whose width is chosen from the particle size, so any possible overlap must occur either inside one cell or across one of its neighbouring cells. At each timestep, every particle is reassigned to a cell based on its current position. The contact loop then visits each occupied cell and checks particle pairs only within that cell and the 26 neighbouring cells, while still applying exactly the same spring-dashpot force model as in the brute-force solver. Therefore, the neighbour-search implementation changes only the search strategy, not the underlying DEM physics.
@@ -350,7 +364,7 @@ The neighbour-search algorithm used in each timestep can therefore be summarised
 \item accumulate the resulting forces and continue with wall contacts and time integration.
 \end{enumerate}
 
-This algorithm is equivalent to the brute-force method in the sense that the same contact model is still applied, but it avoids testing pairs that are too far apart to overlap.
+\textbf{This algorithm is equivalent to the brute-force method in the sense that the same contact model is still applied, but it avoids testing pairs that are too far apart to overlap.}
 
 \begin{table}[t]
     \centering
@@ -374,7 +388,7 @@ This algorithm is equivalent to the brute-force method in the sense that the sam
     }
 \end{table}
 
-Table~\ref{tab:neighbor} gives the full comparison requested in the assignment: correctness of detected contacts, total runtime, contact-stage runtime, candidate-pair count, and scaling with particle number. The correctness result is especially clear because the active-contact counts match exactly for all three test sizes. For $N=200$, both methods detect zero active contacts; for $N=1000$, both detect 2 contacts; and for $N=5000$, both detect 96 contacts. This supports the conclusion that the neighbour grid changes the search cost, not the detected-contact outcome for these test cases.
+\textbf{Table~\ref{tab:neighbor} gives the full comparison requested in the assignment: correctness of detected contacts, total runtime, contact-stage runtime, candidate-pair count, and scaling with particle number.} The correctness result is especially clear because the active-contact counts match exactly for all three test sizes. For $N=200$, both methods detect zero active contacts; for $N=1000$, both detect 2 contacts; and for $N=5000$, both detect 96 contacts. \textbf{This supports the conclusion that the neighbour grid changes the search cost, not the detected-contact outcome for these test cases.}
 
 \begin{figure}[t]
     \centering
@@ -394,11 +408,11 @@ Figure~\ref{fig:neighbor_runtime} shows the overall performance trend directly. 
 
 The total-runtime and contact-stage comparisons in Table~\ref{tab:neighbor} show that the neighbour-search method does not improve performance for every problem size. For the smallest case, $N=200$, the total runtime increases slightly from 0.0151~s to 0.0195~s even though the contact-stage time decreases a little from 0.0119~s to 0.0111~s. This behaviour is expected: for a small system, the brute-force baseline is already cheap, so the overhead of rebuilding the grid, managing cell lists, and traversing neighbour cells is comparable to or larger than the time saved by reducing candidate pairs.
 
-For larger systems, however, the reduction in candidate pairs dominates the overhead very strongly. At $N=1000$, the candidate-pair count falls from 499,500 to 400, the contact-stage runtime drops from 0.3408~s to 0.0303~s, and the total runtime drops from 0.3477~s to 0.0464~s. At $N=5000$, the improvement is even more striking: the candidate-pair count falls from 12,497,500 to 10,298, the contact-stage runtime drops from 8.9646~s to 0.1033~s, and the total runtime drops from 8.9849~s to 0.1339~s. Therefore, the neighbour-search method becomes clearly superior once the particle number is moderate or large.
+For larger systems, however, the reduction in candidate pairs dominates the overhead very strongly. At $N=1000$, the candidate-pair count falls from 499,500 to 400, the contact-stage runtime drops from 0.3408~s to 0.0303~s, and the total runtime drops from 0.3477~s to 0.0464~s. \textbf{At $N=5000$, the improvement is even more striking: the candidate-pair count falls from 12,497,500 to 10,298, the contact-stage runtime drops from 8.9646~s to 0.1033~s, and the total runtime drops from 8.9849~s to 0.1339~s.} \textbf{Therefore, the neighbour-search method becomes clearly superior once the particle number is moderate or large.}
 
 Figure~\ref{fig:neighbor_contacts} complements the table by showing that the detected-contact counts remain unchanged between the two methods for all tested particle numbers. This supports the correctness of the implementation: the grid-based search improves efficiency by reducing the search space, but it does not alter which physical contacts are detected in these benchmark cases.
 
-In summary, the neighbour-search implementation is a successful algorithmic improvement over brute-force all-pairs contact checking. It preserves detected-contact correctness, reduces the contact-search workload dramatically, and improves total runtime strongly for $N=1000$ and $N=5000$. The only case where it does not help is the smallest system, where grid rebuild and cell-management overheads are not yet amortised by the savings in candidate-pair checks.
+\textbf{In summary, the neighbour-search implementation is a successful algorithmic improvement over brute-force all-pairs contact checking. It preserves detected-contact correctness, reduces the contact-search workload dramatically, and improves total runtime strongly for $N=1000$ and $N=5000$. The only case where it does not help is the smallest system, where grid rebuild and cell-management overheads are not yet amortised by the savings in candidate-pair checks.}
 
 \section{Bonus Scientific Investigation}
 Two small scientific studies were performed.
@@ -406,7 +420,7 @@ Two small scientific studies were performed.
 \subsection{Effect of Damping}
 To study the effect of damping, the single-particle bounce problem was repeated for several values of the damping coefficient, $\gamma_n = 5, 20, 50,$ and $100$. In each experiment a single particle was dropped onto the floor, the rebound height after each bounce was measured, and the decay of kinetic energy was tracked. The goal was to determine how the damping coefficient changes the rebound motion after floor impact and how quickly kinetic energy is dissipated from the system.
 
-Figure~\ref{fig:dampingheight} shows the particle height as a function of time for the different damping values. The low-damping case rebounds to larger heights and continues bouncing for longer, whereas the high-damping cases show visibly smaller rebounds and a faster decay toward low-amplitude motion. This directly demonstrates the expected physical role of the dashpot term: increasing $\gamma_n$ removes more kinetic energy during each contact with the floor, so less energy remains available for the next rebound.
+\textbf{Figure~\ref{fig:dampingheight} shows the particle height as a function of time for the different damping values.} \textbf{The low-damping case rebounds to larger heights and continues bouncing for longer, whereas the high-damping cases show visibly smaller rebounds and a faster decay toward low-amplitude motion.} This directly demonstrates the expected physical role of the dashpot term: increasing $\gamma_n$ removes more kinetic energy during each contact with the floor, so less energy remains available for the next rebound.
 
 The same figure also makes the time-scale effect visible. For small $\gamma_n$, the oscillatory bounce pattern persists through much of the simulation window, while for large $\gamma_n$ the motion becomes strongly damped much earlier. So the damping coefficient controls not only how high the particle rebounds, but also how long the bouncing dynamics remain dynamically important.
 
@@ -417,7 +431,7 @@ The same figure also makes the time-scale effect visible. For small $\gamma_n$, 
     \label{fig:dampingheight}
 \end{figure}
 
-Figure~\ref{fig:dampingke} shows the corresponding kinetic-energy histories. The repeated peaks correspond to free-fall acceleration between impacts, while the sharp drops occur during dissipative wall contacts. As $\gamma_n$ increases, the kinetic-energy peaks decay more rapidly from bounce to bounce, which provides a direct measure of the increased rate of energy dissipation.
+\textbf{Figure~\ref{fig:dampingke} shows the corresponding kinetic-energy histories.} The repeated peaks correspond to free-fall acceleration between impacts, while the sharp drops occur during dissipative wall contacts. \textbf{As $\gamma_n$ increases, the kinetic-energy peaks decay more rapidly from bounce to bounce, which provides a direct measure of the increased rate of energy dissipation.}
 
 This plot is useful because it separates the contact physics from the trajectory view. The height plot shows the visible response, while the kinetic-energy plot shows the mechanism behind it: stronger damping removes a larger fraction of energy at each impact, so the later peaks become much smaller and the system approaches weak motion more quickly.
 
@@ -428,9 +442,9 @@ This plot is useful because it separates the contact physics from the trajectory
     \label{fig:dampingke}
 \end{figure}
 
-The rebound-height analysis is summarised in Figure~\ref{fig:rebound}, which plots rebound height against bounce number. This makes the damping effect even clearer because it removes the time axis and focuses directly on the peak response after each collision. The higher-damping curves fall away more quickly, confirming that larger $\gamma_n$ leads to stronger per-impact energy loss and therefore smaller successive rebounds.
+\textbf{The rebound-height analysis is summarised in Figure~\ref{fig:rebound}, which plots rebound height against bounce number.} This makes the damping effect even clearer because it removes the time axis and focuses directly on the peak response after each collision. \textbf{The higher-damping curves fall away more quickly, confirming that larger $\gamma_n$ leads to stronger per-impact energy loss and therefore smaller successive rebounds.}
 
-Figure~\ref{fig:damping} then combines the single-particle and particle-cloud studies in one summary view. In both systems, increasing damping lowers the remaining kinetic energy at the end of the run. The trend is clearer and more monotone in the cloud case, which suggests that repeated many-body contacts make the cumulative dissipative effect of $\gamma_n$ even more visible at the system level.
+Figure~\ref{fig:damping} then combines the single-particle and particle-cloud studies in one summary view. \textbf{In both systems, increasing damping lowers the remaining kinetic energy at the end of the run.} The trend is clearer and more monotone in the cloud case, which suggests that repeated many-body contacts make the cumulative dissipative effect of $\gamma_n$ even more visible at the system level.
 
 \begin{figure}[t]
     \centering
@@ -471,7 +485,7 @@ These configuration snapshots are helpful because they connect the scalar diagno
     \label{fig:cloudconfigs}
 \end{figure}
 
-The cloud-settling study was then repeated for different damping coefficients so that the emergent behaviour could also be examined as a function of $\gamma_n$. Figure~\ref{fig:clouddamping} shows that increasing the damping coefficient reduces the final kinetic energy of the particle cloud and slightly changes the final center-of-mass height. The reduction in final kinetic energy is the clearest trend: stronger damping suppresses residual collective motion and drives the system toward a more strongly dissipated settled state.
+The cloud-settling study was then repeated for different damping coefficients so that the emergent behaviour could also be examined as a function of $\gamma_n$. \textbf{Figure~\ref{fig:clouddamping} shows that increasing the damping coefficient reduces the final kinetic energy of the particle cloud and slightly changes the final center-of-mass height. The reduction in final kinetic energy is the clearest trend: stronger damping suppresses residual collective motion and drives the system toward a more strongly dissipated settled state.}
 
 The variation in final center-of-mass height is smaller than the variation in final kinetic energy, which is also physically reasonable. The damping coefficient mainly changes how motion is dissipated during collisions; it has a stronger effect on how energetic the cloud remains than on the final gross position of the settled mass over this short simulation window.
 
@@ -482,7 +496,7 @@ The variation in final center-of-mass height is smaller than the variation in fi
     \label{fig:clouddamping}
 \end{figure}
 
-These cloud results complement the one-particle bounce study. The single-particle plots explain the local contact physics clearly: larger damping reduces rebound height and increases the rate of energy loss after repeated floor impacts. The cloud-settling results then show how the same contact-level dissipation appears at the collective level, where stronger damping reduces residual motion, weakens post-collision agitation, and promotes a more rapidly damped emergent particle arrangement. In summary, the damping study and the cloud-settling study together show that the dashpot coefficient controls both the local rebound response of individual contacts and the large-scale emergent behaviour of the many-particle system.
+These cloud results complement the one-particle bounce study. The single-particle plots explain the local contact physics clearly: larger damping reduces rebound height and increases the rate of energy loss after repeated floor impacts. The cloud-settling results then show how the same contact-level dissipation appears at the collective level, where stronger damping reduces residual motion, weakens post-collision agitation, and promotes a more rapidly damped emergent particle arrangement. \textbf{In summary, the damping study and the cloud-settling study together show that the dashpot coefficient controls both the local rebound response of individual contacts and the large-scale emergent behaviour of the many-particle system.}
 
 \begin{figure}[t]
     \centering
@@ -492,11 +506,11 @@ These cloud results complement the one-particle bounce study. The single-particl
 \end{figure}
 
 \section{Discussion and Conclusions}
-This paper presented a complete workflow for a simple three-dimensional DEM solver: physical formulation, numerical implementation, verification, profiling, OpenMP parallelisation, neighbour search, and two bonus scientific studies. The verification cases showed that the solver reproduces the expected free-fall, constant-velocity, and bounce behaviour. The profiling and scaling studies then identified the particle-contact loop as the dominant bottleneck and showed that OpenMP provides useful acceleration, especially for the larger particle-count cases.
+\textbf{This paper presented a complete workflow for a simple three-dimensional DEM solver: physical formulation, numerical implementation, verification, profiling, OpenMP parallelisation, neighbour search, and two bonus scientific studies.} The verification cases showed that the solver reproduces the expected free-fall, constant-velocity, and bounce behaviour. The profiling and scaling studies then identified the particle-contact loop as the dominant bottleneck and showed that OpenMP provides useful acceleration, especially for the larger particle-count cases.
 
 The additional studies in the paper support the same overall picture. The neighbour-search method preserved detected-contact correctness while reducing candidate pairs and runtime strongly for the larger systems, although its overhead was not worthwhile for the smallest test case. The damping and cloud-settling studies showed that changing the damping coefficient affects both the local rebound response of single-particle impacts and the emergent collective behaviour of many-particle settling.
 
-In conclusion, the work completed in this paper demonstrates that even a compact DEM solver can be verified carefully, analysed quantitatively, and improved both computationally and physically. The final code remains a simplified baseline model with translational motion and normal contact forces only, but within that scope it successfully reproduces the behaviours and performance trends studied in the report.
+\textbf{In conclusion, the work completed in this paper demonstrates that even a compact DEM solver can be verified carefully, analysed quantitatively, and improved both computationally and physically. The final code remains a simplified baseline model with translational motion and normal contact forces only, but within that scope it successfully reproduces the behaviours and performance trends studied in the report.}
 
 \section*{Code and Reproducibility}
 Source code, build instructions, and scripts are included in the project repository at \texttt{https://github.com/Praveenjhas/HPSC\_assignment}. The main solver is in \texttt{src/main.cpp}, the plotting script is in \texttt{scripts/plot\_results.py}, and generated figures are stored in \texttt{report/figures}. CSV outputs were used for all plots in this paper. Running the documented workflow regenerates the simulation outputs, plots, and final report from the repository contents.
